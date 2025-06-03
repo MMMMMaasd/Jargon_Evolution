@@ -1,0 +1,26 @@
+Paper: 
+Language Evolution for Evading Social Media Regulation via LLM-based Multi-agent Simulation
+多agents互动，不被监管者发现的暗语的生成
+https://arxiv.org/html/2405.02858v1
+
+Generative Agents: Interactive Simulacra of Human Behavior
+AI大模型：斯坦福AI西部世界小镇
+https://arxiv.org/abs/2304.03442
+https://github.com/joonspk-research/generative_agents?tab=readme-ov-file
+
+
+Local LLM Environment Setup:
+Ollama:
+https://ollama.com/download
+ollama手册:
+https://github.com/ollama/ollama-python
+直接运行 llama3.2:
+ollama run llama3.2
+安装 llama3.2:
+ollama pull llama3
+Agent structure
+LangGraph
+需要的环境：
+pip install langgraph langchain ollama
+
+Edit here: https://docs.google.com/document/d/1ccyfAoapbBJtDhLiGDPYnoVRweGnz3RTZmCDGMHxbv4/edit?usp=sharing

@@ -1,0 +1,82 @@
+Interact: click the specific event, and place their own character card into the slot below the visitor. Similar to Sultan’s game
+
+Win/Lose condition:
+“Tribute to Blackbeard” (黑胡子的贡税)
+Every seven days you need to pay tribute to Blackbeard. Acceptable tributes include:
+Hostage (character card)
+Gold Coins
+Treasure
+Equipment
+Book
+Therefore, each of the above items will have its respective value attached, represented by the number of gold coins.
+Failure of tribute will end up with you getting killed by Blackbeard with a random execution method
+
+Card type:
+Character (角色) - who does the player send for interaction
+Rogue Tricks (贼招儿) - one-time use, used to improve a character's certain skill at one time
+Gold Coins(金币) - the main currency to survive in this world
+Treasure(财宝) - mainly used to increase the favorability with other NPCs, gifts, Blackbeard's tribute, trade, and sell to the black market.
+Equipment(装备) - weapons, armor, accessories
+Book(书籍) - improve the specific skill of the character
+Execution(处刑) - used to kill/Robbery/rape a character
+Fuck(开操)
+
+Core Mechanics: 
+Tavern Visitors (酒馆的访客们）
+Tavern visitor interaction system, with five different visitors every day, players can choose to interact with one of them.
+Tavern visitor interaction prepare panel:
+Two slots that the player can put a character card in (1 is necessary) 
+One for rogue tricks
+One extra slot that the player can put: Gold Coins, treasure, execution card, etc
+After entering the interaction page with a visitor, the player can choose to:
+Chatting over wine (酒中谈心)
+Robbery (robbery of life/robbery of money/robbery of sex) 抢劫（劫命/劫财/劫色)
+Recruitment (招募) - successful recruitment will end up with obtaining the corresponding character card
+
+Set Sail (出航)
+
+Prepare panel:
+List of slots for the sailing team
+One for rogue tricks
+After entering the set sail panel, the player can choose to sail to different countries(regions):
+Sea Area 1
+Sea Area 2
+Sea Area 3
+Different sea areas will give back various types of rewards and different storylines. 
+Reward:
+Fixed amount of gold coins
+Treasure/Equipment
+New opportunity events (high probability) - including new people you meet
+
+Random Event (随机事件)
+
+通过玩家参与出航选项产生，包括能够赌命来赚取大量金币的Roulette，购买特定国家书籍的
+ 
+Character skill:
+Renown (名望)
+Infamy (恶名)
+Physique (体魄)
+Fighting (战斗)
+Wisdom (智慧)
+Charm (魅力)
+Bragging (吹牛逼)
+
+Locally hosting LLM
+Existing in the simulation, 
+Interaction is not done by LLM, only by game AI.
+RIM World - test the AI in it - use the built-in AI in it
+Run the simulation loop on it, they have the system 
+There is already a system - we can integrate LLM into it 
+There is also a MOD of the LLM of it
+
+RimDialogue
+https://steamcommunity.com/sharedfiles/filedetails/?id=2960127000
+RimGPT
+https://steamcommunity.com/sharedfiles/filedetails/?id=3365889763
+
+
+Sultan’s game
+Jargon integration 
+Language evolution 
+
+Edit here: https://docs.google.com/document/d/1sYuWjNEKDBeSRoDyhbxrJUocxTppxQHmlzQ75F5BLgA/edit?usp=sharing
