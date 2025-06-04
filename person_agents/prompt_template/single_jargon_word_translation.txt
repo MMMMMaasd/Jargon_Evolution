@@ -1,0 +1,27 @@
+new_jargon_word_generation.txt
+
+Variables: 
+!<INPUT 0>! -- Identity Stable Set
+!<INPUT 1>! -- Current Known Jargon
+!<INPUT 2>! -- Persona full names
+!<INPUT 3>! -- New encounter big event
+!<INPUT 4>! -- word to translate
+
+<commentblockmarker>###</commentblockmarker>
+!<INPUT 0>!
+
+Here is the jargon this person knows and speaks, !<INPUT 1>!
+!<INPUT 2>! is about to create a new jargon word based on this event that occurred: !<INPUT 3>!
+Give me a middle age pirate style jargon name for this word: !<INPUT 4>!
+
+Everything include the jargon itself must be in English, no other language!
+Don't reuse existing jargon!
+Keep the same style and stone of the existed known jargon as much as possible!
+
+Return your answer strictly in JSON with the following format:
+{
+	"jargon": <jargon name>,
+        "meaning": <original word>,
+        "jargon_speaker": <who speak this jargon>
+        "background": <story of where this jargon comes from>
+}
