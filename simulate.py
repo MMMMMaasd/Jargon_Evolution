@@ -29,22 +29,15 @@ def get_fail_safe():
     
 if __name__ == '__main__':
     # EXAMPLE USAGE
-    blackbeard = SinglePirateAgent("blackbeard", "You are a medieval pirate who is good at communicating in English jargon. Your answers can only be in English.")
-    example_iss = """
-       Name: Blackbeard
-       Age: 30
-       Innate traits: Brutal, cunning, theatrical
-       Learned traits: Expert in naval ambush, skilled at reading fear
-       Currently: Blackbeard is preparing to raid a merchant convoy spotted near the eastern trade route. He’s gathering his crew, loading extra gunpowder, and planning to strike at dawn when the mist is thick.
-      Belonged pirate group and position: Captain of the ship Queen Anne's Revenge. leader of the Blackbeard crew.
-    """.strip()
-    
+    blackbeard = SinglePirateAgent("blackbeard")
+    blackbeard_iss = blackbeard.get_iss()
+    print(blackbeard_iss)
     example_known_jargon = """
         set sail: Wash the pineapple
         kill him: Cutting the apple
     """
     example_big_event = "Yesterday, the Black Death broke out in the entire sea area. It was a disease that no one had ever seen before. A large number of people got sick and black ulcers appeared on their skin and they died painfully. We have never seen such a large-scale disease disaster."
-    prompt_input = [example_iss, example_known_jargon, "Blackbeard", example_big_event, "Grab the woman"]
+    prompt_input = [blackbeard_iss, example_known_jargon, "Blackbeard", example_big_event, "Grab the woman"]
     ollama_param = {"model": blackbeard.model, "format": JargonWord.model_json_schema(), "if_stream": False}
     prompt_template = "person_agents/prompt_template/single_jargon_word_translation.txt"
     prompt = generate_prompt(prompt_input, prompt_template)

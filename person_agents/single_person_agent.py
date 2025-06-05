@@ -3,6 +3,8 @@ import uuid
 import ollama
 from typing import List, Dict
 from pydantic import BaseModel
+from person_agents.scratch import *
+import os
 
 class JargonWord(BaseModel):
     jargon: str
@@ -12,7 +14,7 @@ class JargonWord(BaseModel):
 
 class SinglePirateAgent:
     #persona = 人格
-    def __init__(self, name: str, persona: str, model: str = "llama3"):
+    def __init__(self, name: str, model: str = "llama3"):
         self.name = name
         
         """
@@ -32,11 +34,17 @@ class SinglePirateAgent:
         """
         
         self.id = str(uuid.uuid4())
-        self.persona = persona
         # Python dict with key as string and value as string
         self.memory: List[Dict[str, str]] = []
         self.memory = []
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        scratch_saved = os.path.join(base_dir, name, "bootstrap_memory", "scratch.json")
+        print(scratch_saved)
+        self.scratch = Scratch(scratch_saved)
         self.model = model
+    
+    def get_iss(self):
+        return self.scratch.get_str_iss()
 
     # Let's say we want to ask a single priate to translate a English word to a jargon word
     def translate_jargon(self, prompt_message: str) -> str:
