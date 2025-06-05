@@ -4,6 +4,9 @@ import ollama
 from typing import List, Dict
 from pydantic import BaseModel
 from person_agents.scratch import *
+from person_agents.known_jargon import *
+from person_agents.prompt_template.ollama_structure import *
+from utils import func_clean_up, func_validate
 import os
 
 class JargonWord(BaseModel):
@@ -11,7 +14,7 @@ class JargonWord(BaseModel):
     meaning: str
     jargon_user: str
     backrgound: str
-
+    
 class SinglePirateAgent:
     #persona = 人格
     def __init__(self, name: str, model: str = "llama3"):
@@ -42,10 +45,44 @@ class SinglePirateAgent:
         print(scratch_saved)
         self.scratch = Scratch(scratch_saved)
         self.model = model
+        known_jargon_saved = os.path.join(base_dir, name, "bootstrap_memory", "known_jargons.json")
+        self.known_jargon = JargonDict(known_jargon_saved)
     
     def get_iss(self):
         return self.scratch.get_str_iss()
-
+    
+    
+    def generate_new_jargon(self, word, terminate_cond):
+        iss = self.get_iss()
+        known_jargon_str = self.known_jargon.get_full_dict_str()
+        example_big_event = "Yesterday, the Black Death broke out in the entire sea area. It was a disease that no one had ever seen before. A large number of people got sick and black ulcers appeared on their skin and they died painfully. We have never seen such a large-scale disease disaster."
+        prompt_input = [iss, known_jargon_str, self.name, example_big_event, word]
+        ollama_param = {"model": self.model, "format": JargonWord.model_json_schema(), "if_stream": False}
+        prompt_template = "person_agents/prompt_template/single_jargon_word_translation.txt"
+        prompt = generate_prompt(prompt_input, prompt_template)
+        print(prompt)
+        def get_fail_safe():
+            fs = 8
+            return fs
+        fail_safe = get_fail_safe()
+        start_counter = 0
+        while(start_counter <= terminate_cond):
+            output = OLLAMA_safe_generate_response(prompt, ollama_param, 5, fail_safe, func_validate, func_clean_up)
+            print(output)
+            correct_form_output = JargonWord.model_validate_json(output)
+            new_jargon = correct_form_output.jargon
+            new_word = correct_form_output.meaning
+            if ((self.known_jargon.jargon_translate_to_word(new_jargon) == "Can't find in dict") and new_word == word):
+                self.known_jargon.jargon_dict[word] = new_jargon
+                base_dir = os.path.dirname(os.path.abspath(__file__))
+                known_jargon_saved = os.path.join(base_dir, self.name, "bootstrap_memory", "known_jargons.json")
+                with open(known_jargon_saved, 'w') as outfile:
+                    outfile.write(json.dumps(self.known_jargon.jargon_dict, indent=2))
+                return correct_form_output
+            start_counter += 1
+        return False
+        
+        
     # Let's say we want to ask a single priate to translate a English word to a jargon word
     def translate_jargon(self, prompt_message: str) -> str:
         messages = [{"role": "system", "content": self.persona}]

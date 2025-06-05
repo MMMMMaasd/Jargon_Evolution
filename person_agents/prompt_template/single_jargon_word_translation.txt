@@ -10,7 +10,7 @@ Variables:
 <commentblockmarker>###</commentblockmarker>
 !<INPUT 0>!
 
-Here is the jargon this person knows and speaks, !<INPUT 1>!
+Here is the jargon this person knows and speaks: !<INPUT 1>!
 !<INPUT 2>! is about to create a new jargon word based on this event that occurred: !<INPUT 3>!
 !!!What we want: Give me a middle age pirate style jargon name for this word: !<INPUT 4>!
 
